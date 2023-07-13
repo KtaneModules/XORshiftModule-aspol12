@@ -20,7 +20,7 @@ public class XORShiftModule : MonoBehaviour {
    int ModuleId;
    private bool ModuleSolved;
 
-   public int ButtonToPress = 0;
+   int ButtonToPress = 0;
 
    void Awake () {
       ModuleId = ModuleIdCounter++;
@@ -139,7 +139,10 @@ public class XORShiftModule : MonoBehaviour {
             Debug.LogFormat("[XOR Shift #{0}] The resulting number {1} matches the display number {2}. Expecting answer 'Yes'.", ModuleId, finalnum, displaynum);
          }
          else{
+         do {
             displaynum = Rnd.Range(0, 100);
+         } while (displaynum == finalnum);
+            
             ButtonToPress = 1;
             Debug.LogFormat("[XOR Shift #{0}] The resulting number {1} does not match the display number {2}. Expecting answer 'No'", ModuleId, finalnum, displaynum);
          }
@@ -165,11 +168,6 @@ public class XORShiftModule : MonoBehaviour {
             return Color.white; //never gonna happen
    }
 
-
-   void Update () { 
-
-   }
-
    void Solve () {
       GetComponent<KMBombModule>().HandlePass();
    }
@@ -179,14 +177,40 @@ public class XORShiftModule : MonoBehaviour {
    }
 
 #pragma warning disable 414
-   private readonly string TwitchHelpMessage = @"Use !{0} to do something.";
+   private readonly string TwitchHelpMessage = @"Use !{0} press YES/NO to press that corresponding button.";
 #pragma warning restore 414
 
    IEnumerator ProcessTwitchCommand (string Command) {
+      Command = Command.ToUpper();
       yield return null;
+      string[] Parameters = Command.Trim().Split(' ');
+      if (Parameters.Length > 2 || Parameters.Length < 1) {
+         yield return "sendtochaterror I don't understand!";
+      }
+      if (Parameters.Length == 1) {
+         goto ButtonTest;
+      }
+      else {
+         if (Parameters[0] != "PRESS") {
+            yield return "sendtochaterror I don't understand!";
+         }
+         goto ButtonTest;
+      }
+
+      ButtonTest:
+      if (Parameters[0] == "YES") {
+         Buttons[0].OnInteract();
+      }
+      else if (Parameters[0] == "NO") {
+         Buttons[1].OnInteract();
+      }
+      else {
+         yield return "sendtochaterror I don't understand!";
+      }
    }
 
    IEnumerator TwitchHandleForcedSolve () {
       yield return null;
+      Buttons[ButtonToPress].OnInteract();
    }
 }
