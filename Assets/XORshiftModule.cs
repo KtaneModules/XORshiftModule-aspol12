@@ -8,7 +8,7 @@ using KModkit;
 using Rnd = UnityEngine.Random;
 using Math = ExMath;
 
-public class XORshiftModule : MonoBehaviour {
+public class XORShiftModule : MonoBehaviour {
 
    public KMBombInfo Bomb;
    public KMAudio Audio;
@@ -121,27 +121,27 @@ public class XORshiftModule : MonoBehaviour {
             else
                shift = 4;
 
-         Debug.LogFormat("[XORShift #{0}] The color of the number is {1}, and the battery count is {2}. Shift offset = {3}.", ModuleId, colors[color], batterycount, shift);
+         Debug.LogFormat("[XOR Shift #{0}] The color of the number is {1}, and the battery count is {2}. Shift offset = {3}.", ModuleId, colors[color], batterycount, shift);
 
          int secondnum = initialnum >> shift;
 
-         Debug.LogFormat("[XORShift #{0}] The initial number after adding together the values of the Serial # was {1}. Shifting by amount {2}, resulted in the second number being {3}.", ModuleId, initialnum, shift, secondnum);
+         Debug.LogFormat("[XOR Shift #{0}] The initial number after adding together the values of the Serial # was {1}. Shifting by amount {2}, resulted in the second number being {3}.", ModuleId, initialnum, shift, secondnum);
 
          int finalnum = initialnum^secondnum;
          
-         Debug.LogFormat("[XORShift #{0}] Preforming XOR on initial number {1} and second number {2}, resulted in {3}.", ModuleId, initialnum, secondnum, finalnum);
+         Debug.LogFormat("[XOR Shift #{0}] Preforming XOR on initial number {1} and second number {2}, resulted in {3}.", ModuleId, initialnum, secondnum, finalnum);
 
          int chance = Rnd.Range(0, 10);
 
          if (chance >= 5){
             displaynum = finalnum;
             ButtonToPress = 0;
-            Debug.LogFormat("[XORShift #{0}] The resulting number {1} matches the display number {2}. Expecting answer 'Yes'.", ModuleId, finalnum, displaynum);
+            Debug.LogFormat("[XOR Shift #{0}] The resulting number {1} matches the display number {2}. Expecting answer 'Yes'.", ModuleId, finalnum, displaynum);
          }
          else{
             displaynum = Rnd.Range(0, 100);
             ButtonToPress = 1;
-            Debug.LogFormat("[XORShift #{0}] The resulting number {1} does not match the display number {2}. Expecting answer 'No'", ModuleId, finalnum, displaynum);
+            Debug.LogFormat("[XOR Shift #{0}] The resulting number {1} does not match the display number {2}. Expecting answer 'No'", ModuleId, finalnum, displaynum);
          }
 
          DisplayText.color = GetColorByName(colors[color]);
