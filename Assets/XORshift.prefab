@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 114853960920223876}
   - component: {fileID: 114139553842080666}
   - component: {fileID: 114990544492691844}
-  - component: {fileID: 114386989173943312}
+  - component: {fileID: 114543122208710234}
   m_Layer: 0
   m_Name: XORshift
   m_TagString: Untagged
@@ -401,7 +401,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1933170892951354}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.03, y: 0.5716453, z: -0.03}
+  m_LocalPosition: {x: 0.03, y: 0.51, z: -0.03}
   m_LocalScale: {x: 0.007999676, y: 0.021306146, z: 121.62672}
   m_Children: []
   m_Father: {fileID: 4031153613214034}
@@ -910,9 +910,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1933170892951354}
-  m_Text: '
-
-'
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1063,24 +1061,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Mobile/DiffuseTint
---- !u!114 &114386989173943312
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1676409040304040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 031603dcdc674344d9218b4bb0fc9f17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bomb: {fileID: 114454383462897410}
-  Audio: {fileID: 114915473299363512}
-  Buttons:
-  - {fileID: 114470569638542322}
-  - {fileID: 114114501780478132}
-  DisplayText: {fileID: 102667399125305454}
-  ButtonToPress: 0
 --- !u!114 &114390129354693886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1127,6 +1107,23 @@ MonoBehaviour:
   AllowSelectionWrapY: 0
   ForceSelectionHighlight: 0
   ForceInteractionHighlight: 0
+--- !u!114 &114543122208710234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1676409040304040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 031603dcdc674344d9218b4bb0fc9f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bomb: {fileID: 114454383462897410}
+  Audio: {fileID: 114915473299363512}
+  Buttons:
+  - {fileID: 114470569638542322}
+  - {fileID: 114114501780478132}
+  DisplayText: {fileID: 102667399125305454}
 --- !u!114 &114570430299588062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1177,7 +1174,7 @@ MonoBehaviour:
   m_Script: {fileID: -119419473, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModuleType: XorshiftModule
+  ModuleType: XORShiftModule
   ModuleDisplayName: XOR Shift
   RequiresTimerVisibility: 0
 --- !u!114 &114907837735438752
